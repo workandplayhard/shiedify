@@ -1,0 +1,956 @@
+"""Input object type for Account."""
+input AccountInput {
+  city: String
+  companyName: String
+  country: String
+  customPlanInfo: CustomPlanInput
+  emailAddress: Email!
+  firstName: String!
+  lastName: String!
+  phoneNumber: String!
+  planType: PlanTypeChoices
+  postalCode: String
+  state: String
+  street: String
+}
+
+"""Input object type for Update Account."""
+input AccountUpdateInput {
+  email: Email
+  firstName: String
+  lastName: String
+  phoneNumber: String
+}
+
+"""An enumeration."""
+enum AdminPermissionsChoice {
+  """Clients"""
+  CL
+
+  """Feedback"""
+  FB
+
+  """Member"""
+  MB
+
+  """Plans"""
+  PL
+
+  """Support"""
+  SP
+
+  """Stats"""
+  ST
+}
+
+type AlertCountryType {
+  country: String!
+  numAlerts: Int!
+}
+
+type AlertPagination {
+  data: [AlertType]
+  total: Int!
+}
+
+"""An enumeration."""
+enum AlertResolvedBy {
+  """already_refund"""
+  ALREADY_REFUND
+
+  """full_refund"""
+  FULL_REFUND
+
+  """merchant_closed"""
+  MERCHANT_CLOSED
+
+  """no_reason"""
+  NO_REASON
+
+  """order_not_found"""
+  ORDER_NOT_FOUND
+
+  """other"""
+  OTHER
+
+  """remaining_refund"""
+  REMAINING_REFUND
+}
+
+type AlertStatisticType {
+  alertCountries: [AlertCountryType]
+  alerts: [AlertsType]
+  stats: StatsType
+}
+
+"""An enumeration."""
+enum AlertStatus {
+  """Expired"""
+  EX
+
+  """Pending"""
+  PD
+
+  """Resolved"""
+  RS
+}
+
+"""An enumeration."""
+enum AlertStatusChoices {
+  EXPIRED
+  PENDING
+  RESOLVED
+}
+
+type AlertType {
+  """"""
+  amount: Float
+
+  """"""
+  archived: Boolean
+
+  """"""
+  arn: String
+
+  """"""
+  businessIdNumber: String
+
+  """"""
+  cardType: String
+
+  """"""
+  caseId: String
+
+  """"""
+  company: CompanyType
+
+  """"""
+  countryOrigin: String
+
+  """"""
+  createdAt: DateTime!
+
+  """"""
+  currency: String
+
+  """"""
+  deadlineDate: DateTime
+  descriptor: DescriptorType
+
+  """"""
+  email: String!
+
+  """"""
+  fullName: String
+
+  """"""
+  id: ID!
+
+  """"""
+  isStarred: Boolean!
+
+  """"""
+  lastFourDigit: String
+
+  """"""
+  notes: String
+
+  """"""
+  notificationSet: [name!]!
+
+  """"""
+  resolvedBy: AlertResolvedBy
+
+  """"""
+  source: String
+
+  """"""
+  start: Boolean
+
+  """"""
+  status: AlertStatus!
+
+  """"""
+  transactionDate: DateTime
+
+  """"""
+  updatedAt: DateTime!
+
+  """"""
+  user: UserType
+}
+
+type AlertsType {
+  descriptorName: String
+  numAlerts: Int
+}
+
+"""
+Archive account and revoke refresh tokens.
+
+User must be verified and confirm password.
+"""
+type ArchiveAccount {
+  errors: ExpectedErrorType
+  success: Boolean
+}
+
+type ArchiveAlertsMutation {
+  message: String
+  success: Boolean
+}
+
+type ChangePasswordMutation {
+  message: Boolean
+}
+
+type ClientDescriptorsPagination {
+  data: [DescriptorType]
+  total: Int!
+}
+
+type ClientIncomingAlertType {
+  sources: [AlertsType]
+  stats: IncomingStatsType
+}
+
+type ClientPagination {
+  data: [ClientType]
+  total: Int!
+}
+
+type ClientRecentActivityPagination {
+  data: [ClientRecentActivityType]
+  total: Int!
+}
+
+type ClientRecentActivityType {
+  createdAt: String
+  title: String
+}
+
+type ClientType {
+  clientDetail: MeType
+  companyDetail: CompanyType
+  priceDetail: [PlanPriceType]
+}
+
+type CompanyType {
+  """"""
+  id: ID!
+
+  """"""
+  name: String
+}
+
+"""Input object type for Update Company related info."""
+input CompanyUpdateInput {
+  city: String
+  country: String
+  name: String
+  postalCode: String
+  state: String
+  street: String
+}
+
+type ConfigureNotificationMutation {
+  message: String
+  success: Boolean
+}
+
+type ConfirmDescriptorMutation {
+  message: String
+  success: Boolean
+}
+
+type CreateAccountMutation {
+  account: MeType
+  message: String
+  success: Boolean
+}
+
+type CreateDescriptorsMutation {
+  inValid: [String]
+  success: Boolean
+  valid: [String]
+}
+
+type CreateMerchant {
+  message: String
+  success: Boolean
+}
+
+type CreatePlanMutation {
+  plans: [PlansType]
+  success: Boolean
+}
+
+type CreateRemarkMutation {
+  remark: RemarkType
+  success: Boolean
+}
+
+"""Input object type for CustomPlan."""
+input CustomPlanInput {
+  currency: String!
+  prices: [PlanPriceInput]!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+type DeleteAccountMutation {
+  message: String
+  success: Boolean
+}
+
+"""Input object type for delete object."""
+input DeleteObjectInput {
+  id: ID!
+}
+
+type DeletePlansMutation {
+  deletedPlanIds: [ID]
+  message: String
+  success: Boolean
+}
+
+type DescriptorPagination {
+  data: [DescriptorType]
+  total: Int!
+}
+
+"""An enumeration."""
+enum DescriptorStatus {
+  """Active"""
+  AC
+
+  """PendingApproval"""
+  PA
+
+  """PendingRemoval"""
+  PR
+
+  """Removed"""
+  RM
+}
+
+enum DescriptorStatusType {
+  ACTIVE
+  PENDING_APPROVAL
+  PENDING_REMOVAL
+  REMOVED
+}
+
+type DescriptorType {
+  """"""
+  alertsReceived: Int!
+
+  """"""
+  id: ID!
+
+  """"""
+  removedBy: String
+
+  """"""
+  status: DescriptorStatus!
+
+  """"""
+  title: String!
+  user: MeType
+}
+
+"""Email Scalar Description"""
+scalar Email
+
+type ExecuteContactUsMutation {
+  success: Boolean
+}
+
+"\n    Errors messages and codes mapped to\n    fields or non fields errors.\n    Example:\n    {\n        field_name: [\n            {\n                \"message\": \"error message\",\n                \"code\": \"error_code\"\n            }\n        ],\n        other_field: [\n            {\n                \"message\": \"error message\",\n                \"code\": \"error_code\"\n            }\n        ],\n        nonFieldErrors: [\n            {\n                \"message\": \"error message\",\n                \"code\": \"error_code\"\n            }\n        ]\n    }\n    "
+scalar ExpectedErrorType
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+type IncomingStatsType {
+  change: Int
+  data: [StatsDayType]
+}
+
+type LoginMutation {
+  accessToken: String
+}
+
+type MeType {
+  address: String
+  city: String
+  companyName: String
+  country: String
+
+  """"""
+  email: String!
+
+  """"""
+  id: ID!
+
+  """"""
+  lastActiveDate: DateTime
+  name: String
+
+  """"""
+  phoneNumber: String!
+  postalCode: String
+  state: String
+}
+
+"""Main Mutation class which inherits from Mutations from apps"""
+type Mutation {
+  """
+  Archive account and revoke refresh tokens.
+  
+  User must be verified and confirm password.
+  """
+  archiveAccount(password: String!): ArchiveAccount
+  archiveAlerts(alertIds: [ID]!): ArchiveAlertsMutation
+  changePassword(newPassword: Password!): ChangePasswordMutation
+  configureNotification(notificationSettingEntities: NotificationSettingInput!): ConfigureNotificationMutation
+  confirmDescriptors(confirmationToken: String!): ConfirmDescriptorMutation
+  contactUs(email: Email!, firstName: String!, lastName: String!, message: String!): ExecuteContactUsMutation
+  createAccount(accountEntities: AccountInput): CreateAccountMutation
+  createDescriptors(descriptors: [String]!, merchantId: String): CreateDescriptorsMutation
+  createMerchant(country: String, description: String!, email: String, logo: Upload, title: String!, website: String!): CreateMerchant
+  createPlans(planEntities: [PlansInput]!): CreatePlanMutation
+  createRemark(remarkInput: RemarkInput!): CreateRemarkMutation
+  deleteAccount(accountId: ID): DeleteAccountMutation
+  deletePlans(planIds: [DeleteObjectInput]!): DeletePlansMutation
+  forgotPassword(email: String!): String
+  impersonate(clientId: ID!): String
+  login(email: String!, isAdmin: Boolean!, keepSignin: Boolean!, password: String!): LoginMutation
+
+  """Same as `grapgql_jwt` implementation, with standard output."""
+  refreshToken(refreshToken: String!): RefreshToken
+
+  """
+  Register user with fields defined in the settings.
+  
+  If the email field of the user model is part of the
+  registration fields (default), check if there is
+  no user with that email or as a secondary email.
+  
+  If it exists, it does not register the user,
+  even if the email field is not defined as unique
+  (default of the default django user model).
+  
+  When creating the user, it also creates a `UserStatus`
+  related to that user, making it possible to track
+  if the user is archived, verified and has a secondary
+  email.
+  
+  Send account verification email.
+  
+  If allowed to not verified users login, return token.
+  """
+  register(email: String!, password1: String!, password2: String!): Register
+  requestDescriptorRemoval(descriptorIds: [ID]!, removedBy: String!): String
+  resendActivationEmail(email: String!): ResendActivationEmailMutation
+  resetPassword(newPassword: Password!, token: String!): String
+  resolveAlerts(alertIds: [ID]!, resolvedBy: ResolvedByChoices): ResolveAlertsMutation
+
+  """Same as `grapgql_jwt` implementation, with standard output."""
+  revokeToken(refreshToken: String!): RevokeToken
+  sendResetPasswordEmail(email: String!): SendResetPasswordEmailMutation
+  starAlert(alertId: ID!): StarringAlertMutation
+  subscribeToNewsletter(newsletterSubscriptionEmail: String!): SubscribeNotificationMutation
+  tokenLogin(isAdmin: Boolean!, keepSignin: Boolean!): TokenLoginMutation
+  updateAccount(account: AccountUpdateInput, company: CompanyUpdateInput): UpdateAccountMutation
+  updatePlans(planEntities: [UpdatePlansInput]!): UpdatePlansMutation
+  updateProfilePic(url: String!): UpdateProfilePic
+  updateRemark(remarkInput: UpdateRemarkInput!): UpdateRemarkMutation
+
+  """
+  Verify user account.
+  
+  Receive the token that was sent by email.
+  If the token is valid, make the user verified
+  by making the `user.status.verified` field true.
+  """
+  verifyAccount(token: String!): VerifyAccount
+  verifyCurrentPassword(password: Password!): VerifyCurrentPasswordMutation
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object."""
+  id: ID!
+}
+
+input NotificationSettingInput {
+  allowed: Boolean!
+  followUps: SMSEmailInput!
+  importantOnly: SMSEmailInput!
+  receiveNewStats: Boolean
+  receiveNewsAndUpdate: Boolean
+  receiveOffersAndDeals: Boolean
+  receiveTipsAndTutorials: Boolean
+  summary: SummaryInput!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+scalar Password
+
+"""An enumeration."""
+enum PlanPlansType {
+  """Basic"""
+  BASIC
+
+  """Custom"""
+  CUSTOM
+
+  """Plus"""
+  PLUS
+
+  """Premium"""
+  PREMIUM
+}
+
+input PlanPriceInput {
+  alertFrom: Int!
+  alertTo: Int!
+  priceFrom: Float!
+  priceTo: Float!
+}
+
+type PlanPriceType {
+  """"""
+  alertCountFrom: Int!
+
+  """"""
+  alertCountTo: Int!
+
+  """"""
+  ethocaPrice: Float!
+
+  """"""
+  id: ID!
+
+  """"""
+  verifiPrice: Float!
+}
+
+"""An enumeration."""
+enum PlanTypeChoices {
+  BASIC
+  CUSTOM
+  PLUS
+  PREMIUM
+}
+
+"""Input object type for Plan."""
+input PlansInput {
+  currency: String!
+  plansType: PlanTypeChoices!
+  priceIds: [ID]!
+}
+
+type PlansType {
+  """"""
+  currency: String!
+
+  """"""
+  description: String!
+
+  """"""
+  id: ID!
+
+  """"""
+  name: String!
+
+  """"""
+  plansType: PlanPlansType!
+  price: [PlanPriceType]
+}
+
+input PriceRangeInput {
+  max: Float!
+  min: Float!
+}
+
+"""Main Query class which inherits from Queries from apps"""
+type Query {
+  getAccount(id: ID): MeType
+  getAlertStatistics(dateRange: TimePeriodInput!): AlertStatisticType
+  getAlerts(limit: Int!, page: Int!, status: AlertStatusChoices!): AlertPagination
+  getClientDescriptors(clientId: String!, limit: Int!, page: Int!, status: DescriptorStatusType!): ClientDescriptorsPagination
+  getClientDetail(userId: Int!): ClientType
+  getClientIncomingAlerts(clientId: String!, dateRange: TimePeriodInput!): ClientIncomingAlertType
+  getClientRecentActivity(clientId: String!, limit: Int!, page: Int!): ClientRecentActivityPagination
+  getClients(limit: Int!, page: Int!, status: UserStatusChoices!): ClientPagination
+  getDescriptors(limit: Int!, page: Int!, search: String): DescriptorPagination
+  getPlan(id: ID): PlansType
+  getPlans(planType: PlanTypeChoices!): [PlansType]
+  getReports(filter: ReportFilterInput, limit: Int!, page: Int!): AlertPagination
+  getSignedUrl(fileName: String!): String
+  me: MeType
+  user(
+    """The ID of the object"""
+    id: ID!
+  ): UserNode
+  users(after: String, before: String, email: String, first: Int, last: Int, offset: Int): UserNodeConnection
+}
+
+"""Same as `grapgql_jwt` implementation, with standard output."""
+type RefreshToken {
+  errors: ExpectedErrorType
+  payload: GenericScalar
+  refreshToken: String
+  success: Boolean
+  token: String
+}
+
+"""
+Register user with fields defined in the settings.
+
+If the email field of the user model is part of the
+registration fields (default), check if there is
+no user with that email or as a secondary email.
+
+If it exists, it does not register the user,
+even if the email field is not defined as unique
+(default of the default django user model).
+
+When creating the user, it also creates a `UserStatus`
+related to that user, making it possible to track
+if the user is archived, verified and has a secondary
+email.
+
+Send account verification email.
+
+If allowed to not verified users login, return token.
+"""
+type Register {
+  errors: ExpectedErrorType
+  success: Boolean
+  token: String
+}
+
+input RemarkInput {
+  adminId: ID!
+  clientId: ID!
+  content: String!
+  senderType: SenderType!
+}
+
+type RemarkType {
+  """"""
+  adminId: String
+
+  """"""
+  content: String
+
+  """"""
+  senderType: RemarksSenderType!
+}
+
+"""An enumeration."""
+enum RemarksSenderType {
+  """Admin"""
+  ADMIN
+
+  """User"""
+  USER
+}
+
+input ReportFilterInput {
+  cardType: [String]
+  descriptorIds: [ID]
+  priceRange: PriceRangeInput
+  source: [String]
+  status: [AlertStatusChoices]
+  timePeriod: TimePeriodInput
+}
+
+type ResendActivationEmailMutation {
+  success: Boolean
+}
+
+type ResolveAlertsMutation {
+  message: String
+  success: Boolean
+  updatedAlerts: [ID]
+}
+
+"""An enumeration."""
+enum ResolvedByChoices {
+  already_refund
+  full_refund
+  merchant_closed
+  no_reason
+  order_not_found
+  other
+  remaining_refund
+}
+
+"""Same as `grapgql_jwt` implementation, with standard output."""
+type RevokeToken {
+  errors: ExpectedErrorType
+  revoked: Int
+  success: Boolean
+}
+
+input SMSEmailInput {
+  email: Boolean!
+  sms: Boolean!
+}
+
+type SendResetPasswordEmailMutation {
+  success: Boolean
+}
+
+"""An enumeration."""
+enum SenderType {
+  ADMIN
+  USER
+}
+
+type StarringAlertMutation {
+  message: String
+  success: Boolean
+}
+
+type StatsDayType {
+  day: String
+  numAlerts: Int
+}
+
+type StatsType {
+  change: Int
+  data: [StatsDayType]
+}
+
+type SubscribeNotificationMutation {
+  message: String
+  success: Boolean
+}
+
+"""Main Subscription class which inherits from Subscriptions from apps"""
+type Subscription {
+  newNotification(companyId: String): name
+}
+
+"""An enumeration."""
+enum SummaryChoices {
+  SUMMARIZE30
+  SUMMARIZE60
+  SUMMARIZE120
+}
+
+input SummaryInput {
+  email: Boolean!
+  sms: Boolean!
+  type: SummaryChoices!
+}
+
+input TimePeriodInput {
+  end: DateTime!
+  start: DateTime!
+}
+
+type TokenLoginMutation {
+  accessToken: String
+}
+
+type UpdateAccountMutation {
+  account: MeType
+  message: String
+  success: Boolean
+}
+
+"""Input object type for Updating Plan."""
+input UpdatePlansInput {
+  currency: String!
+  id: ID!
+  plansType: PlanTypeChoices!
+  priceIds: [ID]!
+}
+
+type UpdatePlansMutation {
+  message: String
+  plans: [PlansType]
+  success: Boolean
+}
+
+type UpdateProfilePic {
+  success: Boolean
+}
+
+input UpdateRemarkInput {
+  content: String!
+  remarkId: ID!
+  senderType: SenderType!
+}
+
+type UpdateRemarkMutation {
+  remark: RemarkType
+  success: Boolean
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload
+
+type UserNode implements Node {
+  archived: Boolean
+
+  """"""
+  createdAt: DateTime!
+
+  """"""
+  email: String!
+
+  """"""
+  firstName: String
+
+  """The ID of the object."""
+  id: ID!
+
+  """"""
+  isActive: Boolean!
+
+  """"""
+  isStaff: Boolean!
+
+  """"""
+  lastLogin: DateTime
+
+  """"""
+  lastName: String
+
+  """"""
+  name: String!
+
+  """"""
+  permissionsChoice: AdminPermissionsChoice!
+  pk: Int
+  secondaryEmail: String
+
+  """"""
+  updatedAt: DateTime!
+  verified: Boolean
+}
+
+type UserNodeConnection {
+  """Contains the nodes in this connection."""
+  edges: [UserNodeEdge]!
+
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+}
+
+"""A Relay edge containing a `UserNode` and its cursor."""
+type UserNodeEdge {
+  """A cursor for use in pagination"""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: UserNode
+}
+
+"""An enumeration."""
+enum UserStatusChoices {
+  ACTIVE
+  CANCELLED
+  DISABLED
+  PENDING
+}
+
+type UserType {
+  """"""
+  email: String!
+
+  """"""
+  firstName: String!
+
+  """"""
+  id: ID!
+
+  """"""
+  lastName: String!
+
+  """"""
+  phoneNumber: String!
+}
+
+"""
+Verify user account.
+
+Receive the token that was sent by email.
+If the token is valid, make the user verified
+by making the `user.status.verified` field true.
+"""
+type VerifyAccount {
+  errors: ExpectedErrorType
+  success: Boolean
+}
+
+type VerifyCurrentPasswordMutation {
+  valid: Boolean
+}
+
+type name {
+  alert: AlertType
+
+  """"""
+  amount: String
+  company: CompanyType
+
+  """"""
+  createdAt: DateTime!
+
+  """"""
+  deadlineDate: DateTime!
+
+  """"""
+  id: ID!
+
+  """"""
+  isReadn: Boolean
+
+  """"""
+  text: String
+
+  """"""
+  timeToSend: DateTime
+
+  """"""
+  title: String
+
+  """"""
+  updatedAt: DateTime!
+}

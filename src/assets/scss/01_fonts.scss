@@ -1,0 +1,282 @@
+@font-face {
+  font-family: 'icoFont';
+  src:  url('/src/assets/icons/icoFont/icoFont.eot');
+  src:  url('/src/assets/icons/icoFont/icoFont.eot') format('embedded-opentype'),
+  url('/src/assets/icons/icoFont/icoFont.ttf') format('truetype'),
+  url('/src/assets/icons/icoFont/icoFont.woff') format('woff'),
+  url('/src/assets/icons/icoFont/icoFont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+[class^="ic-"], [class*=" ic-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icoFont' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: inherit;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-check:before {
+  content: "\e900";
+}
+.ic-alert-circle:before {
+  content: "\e901";
+}
+.ic-eye:before {
+  content: "\e902";
+}
+.ic-eye-off:before {
+  content: "\e903";
+}
+.ic-loading:before {
+  content: "\e904";
+}
+.ic-arrow-left:before {
+  content: "\e905";
+}
+.ic-arrow-right:before {
+  content: "\e906";
+}
+.ic-lock:before {
+  content: "\e907";
+}
+.ic-check-circle:before {
+  content: "\e908";
+}
+.ic-marker-pin:before {
+  content: "\e909";
+}
+.ic-mail:before {
+  content: "\e910";
+}
+.ic-message-check-circle:before {
+  content: "\e911";
+}
+.ic-stars:before {
+  content: "\e912";
+}
+.ic-search:before {
+  content: "\e913";
+}
+.ic-settings:before {
+  content: "\e914";
+}
+.ic-bell:before {
+  content: "\e915";
+}
+.ic-bookmark:before {
+  content: "\e916";
+}
+.ic-help-circle:before {
+  content: "\e917";
+}
+.ic-log-out:before {
+  content: "\e918";
+}
+.ic-chevron-left:before {
+  content: "\e919";
+}
+.ic-chevron-right:before {
+  content: "\e920";
+}
+.ic-chevron-down:before {
+  content: "\e921";
+}
+.ic-chevron-up:before {
+  content: "\e922";
+}
+.ic-announcement:before {
+  content: "\e923";
+}
+.ic-plus-circle:before {
+  content: "\e924";
+}
+.ic-close:before {
+  content: "\e925";
+}
+.ic-credit-card:before {
+  content: "\e926";
+}
+.ic-dots-vertical:before {
+  content: "\e927";
+}
+.ic-dots-horizontal:before {
+  content: "\e928";
+}
+.ic-zap:before {
+  content: "\e929";
+}
+.ic-statistics:before {
+  content: "\e930";
+}
+.ic-file:before {
+  content: "\e931";
+}
+.ic-rules:before {
+  content: "\e932";
+}
+.ic-gear:before {
+  content: "\e933";
+}
+.ic-archive:before {
+  content: "\e934";
+}
+.ic-filters:before {
+  content: "\e935";
+}
+.ic-download:before {
+  content: "\e936";
+}
+.ic-check-circle-broken:before {
+  content: "\e937";
+}
+.ic-arrange:before {
+  content: "\e938";
+}
+.ic-star:before {
+  content: "\e939";
+}
+.ic-link:before {
+  content: "\e940";
+}
+.ic-file-download:before {
+  content: "\e941";
+}
+.ic-calendar:before {
+  content: "\e942";
+}
+.ic-close-circle:before {
+  content: "\e943";
+}
+.ic-arrow-up:before {
+  content: "\e944";
+}
+.ic-arrow-down:before {
+  content: "\e945";
+}
+.ic-grid:before {
+  content: "\e946";
+}
+.ic-info-circle:before {
+  content: "\e947";
+}
+.ic-upload-cloud:before {
+  content: "\e948";
+}
+.ic-check-verified:before {
+  content: "\e949";
+}
+.ic-folder:before {
+  content: "\e950";
+}
+.ic-passcode-lock:before {
+  content: "\e951";
+}
+.ic-plus:before {
+  content: "\e952";
+}
+.ic-minus:before {
+  content: "\e953";
+}
+.ic-pay-pass:before {
+  content: "\e954";
+}
+.ic-empty-file:before {
+  content: "\e955";
+}
+.ic-link-external:before {
+  content: "\e956";
+}
+.ic-arrow-narrow-up-right:before {
+  content: "\e957";
+}
+.ic-trash:before {
+  content: "\e958";
+}
+.ic-download-cloud:before {
+  content: "\e959";
+}
+.ic-save:before {
+  content: "\e960";
+}
+.ic-clock:before {
+  content: "\e961";
+}
+.ic-group:before {
+  content: "\e962";
+}
+.ic-coins:before {
+  content: "\e963";
+}
+.ic-building:before {
+  content: "\e964";
+}
+.ic-assistant:before {
+  content: "\e965";
+}
+.ic-support:before {
+  content: "\e966";
+}
+.ic-statistics-fill:before {
+  content: "\e967";
+}
+.ic-log-in:before {
+  content: "\e968";
+}
+.ic-person-add:before {
+  content: "\e969";
+}
+.ic-user-plus:before {
+  content: "\e970";
+}
+.ic-tick:before {
+  content: "\e971";
+}
+.ic-dollar:before {
+  content: "\e972";
+}
+.ic-pencil:before {
+  content: "\e973";
+}
+.ic-lock-circle:before {
+  content: "\e974";
+}
+.ic-flag:before {
+  content: "\e975";
+}
+.ic-zendesk:before {
+  content: "\e976";
+}
+.ic-credit-card-plus:before {
+  content: "\e977";
+}
+.ic-edit:before {
+  content: "\e978";
+}
+.ic-plus-square:before {
+  content: "\e979";
+}
+.ic-minus-square:before {
+  content: "\e980";
+}
+.ic-edit-pencil:before {
+  content: "\e981";
+}
+.ic-delete:before {
+  content: "\e982";
+}
+.ic-filter-funnel:before {
+  content: "\e983";
+}
+.ic-switch-vertical:before {
+  content: "\e984";
+}

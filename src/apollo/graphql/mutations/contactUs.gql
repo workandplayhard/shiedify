@@ -1,0 +1,5 @@
+mutation ContactUs($email: Email!, $firstName: String!, $lastName: String!, $message: String!) {
+  contactUs(email: $email, firstName: $firstName, lastName: $lastName, message: $message) {
+    success
+  }
+}

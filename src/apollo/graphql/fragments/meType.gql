@@ -1,0 +1,13 @@
+fragment MeType on MeType {
+  id
+  email
+  phoneNumber
+  lastActiveDate
+  companyName
+  address
+  state
+  postalCode
+  country
+  name
+  city
+}

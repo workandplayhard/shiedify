@@ -1,0 +1,5 @@
+mutation TokenLogin($isAdmin: Boolean!) {
+  tokenLogin(keepSignin: true, isAdmin: $isAdmin) {
+    accessToken
+  }
+}

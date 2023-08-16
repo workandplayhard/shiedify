@@ -1,0 +1,5 @@
+mutation Login($email: String!, $isAdmin: Boolean!, $keepSignin: Boolean!, $password: String!) {
+  login(email: $email, isAdmin: $isAdmin, keepSignin: $keepSignin, password: $password) {
+    accessToken
+  }
+}

@@ -1,0 +1,5 @@
+query GetAlerts($status: AlertStatusChoices!, $page: Int!, limit: Int!) {
+  getAlerts(status: $status, page: $page, limit: $limit) {
+    ...AlertPagination
+  }
+}
